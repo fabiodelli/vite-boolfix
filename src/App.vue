@@ -1,30 +1,43 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import AppHeader from './components/appHeader.vue'
+import AppMain from './components/appMain.vue'
+import AppFooter from './components/appFooter.vue'
+import axios from 'axios'
+/* import {store} from './store.js' */
+
+export default {
+  data() {
+    return {
+      /* store */
+      API_URL: 'https://api.themoviedb.org/3/search/movie?api_key=4db66c26f4dc5d9d03f395cf284c2c0e&query=',
+      apiRes: null,
+      text:null
+    }
+  },
+
+  methods: {
+    callApi(url) {
+      axios
+        .get(url)
+        .then(response => {
+          this.apiRes = response.data
+          console.log(this.apiRes);
+        })
+        .catch(err => {
+          console.error(err.message);
+        })
+    }
+  }
+}
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <h1>Boolflix</h1>
+
+  <input type="text" placeholder="Search film or series" v-model="text">
+  <input type="button" value="Search" @click='callApi(`${API_URL}${text}`)'>
+
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
