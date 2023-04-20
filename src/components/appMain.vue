@@ -2,16 +2,13 @@
 import { store } from '../store.js'
 export default {
     name: 'appMain',
+    
     data() {
         return {
-            store
+            store,
+            flag:["en","it","cn","fr"],
         }
     },
-    mounted() {
-        setInterval(() => {
-            console.log(store.flag);
-        }, 5000);
-    }
 }
 </script>
 
@@ -24,9 +21,8 @@ export default {
         <div v-for="(result, index) in store.apiRes" class="cards bg-info w-25 p-2">
             <div>{{ result.title }}</div>
             <div>{{ result.original_title }}</div>
-            <div>{{ result.original_language }}</div>
-            <img src="/{{ store.flag[index - 1] }}.png" alt="">
-            <img src="`/${{ store.flag[index] }}.png`" alt="">
+            <img v-if="flag.includes(result.original_language)" :src="'./' + result.original_language + '.png'" alt="">
+            <img v-else src="/world.png" alt="">
             <div>{{ result.vote_average }}</div>
 
         </div>
