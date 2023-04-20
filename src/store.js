@@ -13,7 +13,6 @@ export const store = reactive({
                 .get(url)
                 .then(response => {
                     this.apiRes = response.data.results
-                    this.flag = this.apiRes[1].original_language
                     console.log(this.flag);
                 })
                 .catch(err => {
