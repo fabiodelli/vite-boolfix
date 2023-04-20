@@ -1,5 +1,5 @@
 <script>
-import '../node_modules/bootstrap'
+import '/node_modules/bootstrap/scss/bootstrap.scss'
 import AppHeader from './components/appHeader.vue'
 import AppMain from './components/appMain.vue'
 import AppFooter from './components/appFooter.vue'
@@ -14,7 +14,8 @@ export default {
       /* store */
       API_URL: 'https://api.themoviedb.org/3/search/movie?api_key=4db66c26f4dc5d9d03f395cf284c2c0e',
       apiRes: null,
-      text:''
+      text: '',
+      flag:''
     }
   },
 
@@ -24,7 +25,8 @@ export default {
         .get(url)
         .then(response => {
           this.apiRes = response.data.results
-          console.log(this.apiRes);
+          this.flag = this.apiRes[1].original_language
+          console.log(this.flag);
         })
         .catch(err => {
           console.error(err.message);
@@ -40,16 +42,17 @@ export default {
   <input type="text" placeholder="Search film or series" v-model="text">
   <input type="button" value="Search" @click='callApi(`${API_URL}&query=${text}`)'>
 
-  <div class="container">
-    <div v-for="(result, index) in apiRes" class="cards">     
-        <div>{{ result.title }}</div>
-        <div>{{ result.original_title }}</div>
-        <div>{{ result.original_language }}</div>
-        <div>{{ result.vote_average }}</div>
-      
+  <div class="container d-flex flex-wrap">
+    <div v-for="(result, index) in apiRes" class="cards bg-info w-25 p-2">
+      <div>{{ result.title }}</div>
+      <div>{{ result.original_title }}</div>
+      <div>{{ result.original_language }}</div>
+      <img src="./img/{{ flag }}.png" alt="">
+      <img src="./img/${flag}.png" alt="">
+      <div>{{ result.vote_average }}</div>
+
     </div>
   </div>
-
 </template>
 
 <style scoped></style>
