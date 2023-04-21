@@ -5,7 +5,8 @@ export const store = reactive({
     API_URL: 'https://api.themoviedb.org/3/search/multi?api_key=4db66c26f4dc5d9d03f395cf284c2c0e',
     apiRes: null,
     text: '',
-    
+    stars: [],
+
     callApi(url) {
         console.log(url)
         axios

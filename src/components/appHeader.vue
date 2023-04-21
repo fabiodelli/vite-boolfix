@@ -1,5 +1,5 @@
-<script setup>
-
+<script>
+import { store } from '../store.js'
 </script>
 
 <template>
