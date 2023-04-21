@@ -19,6 +19,7 @@ export default {
 
     <div  class="container d-flex flex-wrap">
         <div v-for="(result, index) in store.apiRes" class="cards bg-info w-25 p-2">
+            <img class="w-100" :src="'https://image.tmdb.org/t/p/w342' + result.poster_path" alt="">
             <div v-if='result.media_type === "movie" '>{{ result.title }}</div>
             <div v-else>{{ result.name }}</div>
             <div v-if='result.media_type === "movie"'>{{ result.original_title }}</div>
