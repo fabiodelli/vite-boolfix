@@ -1,0 +1,44 @@
+    .container-100 {
+        background: rgb(67, 67, 67);
+        min-height: 100vh;
+        overflow-y: hidden;
+        padding: 10vh;
+        .col_2 {
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+            .card_container {
+                width: 100%;
+                height: 100%;
+                position: relative;
+
+
+                .poster {
+                    max-width: 100%;
+                    height: 100%;
+
+                }
+
+                .info {
+                    color: white;
+                    background: black;
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    z-index: 1;
+                    width: 100%;
+                    height: 100%;
+                    padding: 1rem;
+                }
+
+                &:hover .info {
+                    display: inline-block;
+                }
+
+                &:hover .poster {
+                    display: none;
+                }
+            }
+        }
+    }

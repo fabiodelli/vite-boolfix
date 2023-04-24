@@ -1,11 +1,11 @@
 <script>
 import '/node_modules/bootstrap/scss/bootstrap.scss'
-import AppHeader from './components/appHeader.vue'
+import appHeader from './components/appHeader.vue'
 import AppMain from './components/appMain.vue'
 import AppFooter from './components/appFooter.vue'
 
 export default {
-  components:{AppMain},
+  components:{AppMain,appHeader},
   data() {
     return {
     }
@@ -16,6 +16,7 @@ export default {
 
 <template>
 
+  <appHeader/>
   <appMain/>
 
 </template>
