@@ -33,6 +33,7 @@ export default {
                         <img v-for="star in Math.ceil(result.vote_average/2)" src="/fullstar.png">
                         <img v-for="star in  5-Math.ceil(result.vote_average/2)" src="/emptistar.png">
                         <div>{{ result.media_type }}</div>
+                        <div>{{ result.overview }}</div>
                     </div>
                 </div>
             </div>
